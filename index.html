@@ -11,7 +11,7 @@
 </head>
 <body>
   <audio id="bgAudio" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3b26b5b2d5.mp3?filename=spring-energetic-happy-11216.mp3" type="audio/mpeg" />
+    <source src="music/musik.mp3" type="audio/mpeg" />
   </audio>
 
   <div class="page">
@@ -28,6 +28,28 @@
     </section>
 
     <main class="main-content hidden" id="mainContent">
+      <section class="section hero">
+        <div class="container hero-content">
+          <div class="hero-image">
+            <img src="img/mempelaiwanita.png" alt="Nabila & Leo" />
+          </div>
+          <p class="hero-phrase">The Wedding of</p>
+          <h1 class="hero-couple-name">Nabila & Leo</h1>
+          <p class="hero-date">30 April 2026 | 09:00 WIB</p>
+          <button class="save-date-btn" id="saveDateBtn">Save The Date</button>
+        </div>
+      </section>
+
+      <section class="section verse-section">
+        <div class="container">
+          <div class="hero-verse">
+            <h2 class="verse-heading">N&L</h2>
+            <p class="verse-arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
+            <p class="verse-translation">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.” (QS. Ar-Rum: 21)</p>
+          </div>
+        </div>
+      </section>
+
       <section class="section welcome">
         <div class="container welcome-card">
           <div class="welcome-left">
@@ -37,11 +59,11 @@
           </div>
           <div class="welcome-right">
             <div class="photo-card">
-              <img src="https://hi.punakawandigital.id/wp-content/uploads/2025/04/gf-1-85.jpg" alt="Nabila" />
+              <img src="img/mempelaiwanita.png" alt="Nabila" />
               <div class="photo-caption">Nabila</div>
             </div>
             <div class="photo-card">
-              <img src="https://hi.punakawandigital.id/wp-content/uploads/2025/04/gf-2-86.jpg" alt="Leo" />
+              <img src="img/mempelaipria.png" alt="Leo" />
               <div class="photo-caption">Leo</div>
             </div>
           </div>
@@ -96,10 +118,10 @@
           <span class="section-label">Galeri Foto</span>
           <h2>Kenangan kami bersama</h2>
           <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://hi.punakawandigital.id/wp-content/uploads/2025/04/gf-1-85.jpg" alt="Galeri 1" /></div>
-            <div class="gallery-item"><img src="https://hi.punakawandigital.id/wp-content/uploads/2025/04/gf-2-86.jpg" alt="Galeri 2" /></div>
-            <div class="gallery-item"><img src="https://hi.punakawandigital.id/wp-content/uploads/2025/04/gf-3-84.jpg" alt="Galeri 3" /></div>
-            <div class="gallery-item"><img src="https://hi.punakawandigital.id/wp-content/uploads/2025/04/gf-4-86.jpg" alt="Galeri 4" /></div>
+            <div class="gallery-item"><img src="img/galery.png" alt="Galeri 1" /></div>
+            <div class="gallery-item"><img src="img/galery.png" alt="Galeri 2" /></div>
+            <div class="gallery-item"><img src="img/galery.png" alt="Galeri 3" /></div>
+            <div class="gallery-item"><img src="img/galery.png" alt="Galeri 4" /></div>
           </div>
         </div>
       </section>
@@ -121,7 +143,8 @@
           <span class="section-label">Wedding Gift</span>
           <h2>Doa restu Anda adalah hadiah terindah.</h2>
           <p>Jika Anda ingin memberi hadiah, klik tombol di bawah untuk menuju opsi cashless atau transfer.</p>
-          <a class="action-btn" href="#">Klik Disini</a>
+          <a class="action-btn" id="giftBtn" href="#">Klik Disini</a>
+          <p id="rekeningInfo" style="display: none; margin-top: 10px; color: #5d4037; font-weight: 600;">Nomor Rekening: BCA 1234567890 a.n. Nabila<br>Terima kasih atas hadiahnya!</p>
         </div>
       </section>
 
@@ -161,7 +184,8 @@
 
       <footer class="footer">
         <p>Nabila & Leo</p>
-        <p>Made with ❤ by Fajar&Utari</p>
+        <p>Made with ❤ by Utari & Fajar</p>
+        <button id="musicToggle" class="music-btn">Musik On</button>
       </footer>
     </main>
   </div>
