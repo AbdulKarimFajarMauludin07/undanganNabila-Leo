@@ -4,6 +4,10 @@ const mainContent = document.getElementById('mainContent');
 const bgAudio = document.getElementById('bgAudio');
 const commentList = document.getElementById('commentList');
 const rsvpForm = document.getElementById('rsvpForm');
+const musicToggle = document.getElementById('musicToggle');
+const giftBtn = document.getElementById('giftBtn');
+
+let isMusicPlaying = false;
 
 function decodeGuestName(value) {
   if (!value) return 'Tamu Undangan';
@@ -15,17 +19,35 @@ const guest = urlParams.get('to');
 guestName.textContent = decodeGuestName(guest);
 
 openBtn.addEventListener('click', () => {
+  const cover = document.querySelector('.cover');
+  cover.style.display = 'none';
   mainContent.classList.remove('hidden');
   mainContent.scrollIntoView({ behavior: 'smooth' });
-  if (bgAudio) {
-    bgAudio.play().catch(() => {
-      // Autoplay mungkin diblokir; tidak apa-apa jika gagal
+  if (bgAudio && !isMusicPlaying) {
+    bgAudio.play().then(() => {
+      isMusicPlaying = true;
+      musicToggle.textContent = 'Musik Off';
+    }).catch(() => {
+      // Autoplay mungkin diblokir
     });
   }
 });
 
+musicToggle.addEventListener('click', () => {
+  if (bgAudio) {
+    if (isMusicPlaying) {
+      bgAudio.pause();
+      musicToggle.textContent = 'Musik On';
+    } else {
+      bgAudio.play();
+      musicToggle.textContent = 'Musik Off';
+    }
+    isMusicPlaying = !isMusicPlaying;
+  }
+});
+
 function updateCountdown() {
-  const eventDate = new Date('2025-05-04T09:00:00');
+  const eventDate = new Date('2026-04-30T09:00:00');
   const now = new Date();
   const diff = eventDate - now;
 
@@ -95,6 +117,37 @@ rsvpForm.addEventListener('submit', (event) => {
   messageInput.value = '';
 });
 
+giftBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  const rekeningInfo = document.getElementById('rekeningInfo');
+  rekeningInfo.style.display = rekeningInfo.style.display === 'none' ? 'block' : 'none';
+});
+
+saveDateBtn.addEventListener('click', () => {
+  const countdownSection = document.querySelector('.intro');
+  countdownSection.scrollIntoView({ behavior: 'smooth' });
+});
+
 updateCountdown();
 setInterval(updateCountdown, 1000);
 loadComments();
+
+// Animasi scroll
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+// Observe semua elemen yang mau dianimasi
+document.querySelectorAll('.section h2, .section p, .event-card, .photo-card, .gallery-item, .comment-item').forEach(el => {
+  el.classList.add('animate');
+  observer.observe(el);
+});
